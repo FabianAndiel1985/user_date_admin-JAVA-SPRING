@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -57,10 +57,5 @@ public void setEndTime(Date endTime) {
 	this.endTime = endTime;
 }
   
-  
-  
-  
-
-  
-   
+ 
 }

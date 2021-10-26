@@ -11,12 +11,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 class User {
 	
   private @Id @GeneratedValue Long id;
   private String name;
-  @OneToMany(mappedBy = "users", 
+  @OneToMany(mappedBy = "user", 
           cascade = CascadeType.ALL)
   private Set<Appointment> pages;
 
