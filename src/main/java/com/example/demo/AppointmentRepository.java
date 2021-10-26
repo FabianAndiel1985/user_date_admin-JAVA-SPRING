@@ -2,6 +2,6 @@ package com.example.demo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-interface AppointmentRepository extends JpaRepository<User, Long> {
+interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
 }
