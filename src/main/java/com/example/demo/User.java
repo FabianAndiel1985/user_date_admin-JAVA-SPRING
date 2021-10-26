@@ -1,16 +1,24 @@
 package com.example.demo;
 
 import java.util.Objects;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "users")
 class User {
-
+	
   private @Id @GeneratedValue Long id;
   private String name;
+  @OneToMany(mappedBy = "users", 
+          cascade = CascadeType.ALL)
+  private Set<Appointment> pages;
 
   User(String name) {
     this.name = name;
@@ -49,6 +57,5 @@ public boolean equals(Object obj) {
 public String toString() {
 	return "User [id=" + id + ", name=" + name + "]";
 }
-  
    
 }
