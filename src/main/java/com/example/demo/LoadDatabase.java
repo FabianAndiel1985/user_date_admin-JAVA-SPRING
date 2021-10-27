@@ -1,8 +1,10 @@
 package com.example.demo;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -24,9 +26,11 @@ class LoadDatabase {
 	  Appointment appointment1 = new Appointment("1.Untersuchung", LocalDateTime.parse("2021-10-21T06:30:00"), LocalDateTime.parse("2021-10-21T07:30:00"), user1);
 	  Appointment appointment2 = new Appointment("2.Untersuchung", LocalDateTime.parse("2021-10-22T06:30:00"), LocalDateTime.parse("2021-10-22T07:30:00"), user1);
 	  
-//	  Set<Appointment> set = new HashSet<>(Arrays.asList(appointment1,appointment2));
-//	  
-//	  user1.setAppointments(set);
+	  List<Appointment> list = new ArrayList<>();
+	  list.add(appointment1);
+	  list.add(appointment2);
+	  
+//	  user1.setAppointments(list);
 	  
 	  
     return args -> {

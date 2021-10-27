@@ -10,6 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.ElementCollection;
+
+
+
 
 @Entity
 @Table(name = "user")
@@ -17,6 +21,7 @@ class User {
 	
   private @Id @GeneratedValue Long id;
   private String name;
+  @ElementCollection
   @OneToMany(mappedBy = "user", 
           cascade = CascadeType.ALL)
   private List<Appointment> appointments;
