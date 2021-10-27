@@ -28,6 +28,12 @@ class Appointment {
 	  @JoinColumn(name = "user_id", nullable = false)
 	  private User user;
   
+	  
+	  public Appointment()  {
+		  
+	  }
+	  
+	  
 	public Appointment(String title, LocalDateTime startTime, LocalDateTime endTime, User user) {
 		this.title = title;
 		this.startTime = startTime;
@@ -57,6 +63,37 @@ class Appointment {
 	public void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
 	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(endTime, id, startTime, title, user);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Appointment other = (Appointment) obj;
+		return Objects.equals(endTime, other.endTime) && Objects.equals(id, other.id)
+				&& Objects.equals(startTime, other.startTime) && Objects.equals(title, other.title)
+				&& Objects.equals(user, other.user);
+	}
+
+
+	@Override
+	public String toString() {
+		return "Appointment [id=" + id + ", title=" + title + ", startTime=" + startTime + ", endTime=" + endTime
+				+ ", user=" + user + "]";
+	}
+	
+	
 	  
  
 }

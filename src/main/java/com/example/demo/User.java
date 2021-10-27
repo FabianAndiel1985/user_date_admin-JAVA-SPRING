@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -18,7 +19,7 @@ class User {
   private String name;
   @OneToMany(mappedBy = "user", 
           cascade = CascadeType.ALL)
-  private Set<Appointment> appointments;
+  private List<Appointment> appointments;
   
   public User() {}
   
@@ -42,11 +43,11 @@ class User {
 		this.name = name;
 	}
 	
-	public Set<Appointment> getAppointments() {
+	public List<Appointment> getAppointments() {
 		return appointments;
 	}
 	
-	public void setAppointments(Set<Appointment> appointments) {
+	public void setAppointments(List<Appointment> appointments) {
 		this.appointments = appointments;
 	}
 
