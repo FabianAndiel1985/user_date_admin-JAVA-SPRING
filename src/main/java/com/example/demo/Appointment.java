@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.Objects;
       
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,10 +15,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "appointments")
-class Appointment {
+class Appointment implements Serializable {
 
 	  private @Id @GeneratedValue Long id;
 	  private String title;
@@ -24,7 +27,9 @@ class Appointment {
 	  private LocalDateTime startTime;
 	  @Column(unique = true)
 	  private LocalDateTime endTime;
-	  @ManyToOne()
+
+	  
+	  @ManyToOne(fetch = FetchType.LAZY, optional = false)
 	  @JoinColumn(name = "user_id", nullable = false)
 	  private User user;
   

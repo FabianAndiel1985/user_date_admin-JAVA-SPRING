@@ -25,13 +25,8 @@ class LoadDatabase {
 	  
 	  Appointment appointment1 = new Appointment("1.Untersuchung", LocalDateTime.parse("2021-10-21T06:30:00"), LocalDateTime.parse("2021-10-21T07:30:00"), user1);
 	  Appointment appointment2 = new Appointment("2.Untersuchung", LocalDateTime.parse("2021-10-22T06:30:00"), LocalDateTime.parse("2021-10-22T07:30:00"), user1);
-	  
-	  List<Appointment> list = new ArrayList<>();
-	  list.add(appointment1);
-	  list.add(appointment2);
-	  
-//	  user1.setAppointments(list);
-	  
+	   
+
 	  
     return args -> {
     	 log.info("Preloading " + userRepository.save(user1));

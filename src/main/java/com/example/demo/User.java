@@ -1,30 +1,24 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.ElementCollection;
-
+import javax.persistence.*;
+import java.io.Serializable;
 
 
 
 @Entity
 @Table(name = "user")
-class User {
+class User implements Serializable{
 	
   private @Id @GeneratedValue Long id;
   private String name;
-  @ElementCollection
-  @OneToMany(mappedBy = "user", 
-          cascade = CascadeType.ALL)
-  private List<Appointment> appointments;
+  private Appointment appointment;
+//  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
+//  cascade = CascadeType.ALL)
+
   
   public User() {}
   
@@ -48,20 +42,21 @@ class User {
 		this.name = name;
 	}
 	
-	public List<Appointment> getAppointments() {
-		return appointments;
+
+	public Appointment getAppointment() {
+		return appointment;
+	}
+
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
 	}
 	
-	public void setAppointments(List<Appointment> appointments) {
-		this.appointments = appointments;
+	@Override
+	public int hashCode() {
+		return Objects.hash(appointment, id, name);
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(appointments, id, name);
-	}
-  
-  @Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -70,13 +65,13 @@ class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(appointments, other.appointments) && Objects.equals(id, other.id)
+		return Objects.equals(appointment, other.appointment) && Objects.equals(id, other.id)
 				&& Objects.equals(name, other.name);
-  }
-	
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", appointments=" + appointments + "]";
+		return "User [id=" + id + ", name=" + name + ", appointments=" + appointment + "]";
 	}
     
 }
