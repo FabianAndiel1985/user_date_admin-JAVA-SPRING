@@ -20,13 +20,18 @@ class User {
           cascade = CascadeType.ALL)
   private Set<Appointment> appointments;
   
-
+  public User() {}
+  
   public User(String name) {
 	this.name = name;
   }
 
 	public Long getId() {
 		return id;
+	  }
+	
+	public void setId(Long id) {
+		this.id=id;
 	  }
 
 	public String getName() {
